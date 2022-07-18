@@ -25,5 +25,13 @@ RSpec.describe Recipe, type: :model do
 
       expect(pasta.total_cost).to eq(9)
     end
+
+    it 'orders by name alphabetically' do
+      pasta = Recipe.create!(name: 'spaghetti', complexity: 1, genre: 'italian')
+      sandwhich = Recipe.create!(name: 'pulled pork', complexity: 2, genre: 'bbq')
+      chicken = Recipe.create!(name: 'chicken salad', complexity: 3, genre: 'salad')
+
+      expect(Recipe.order_by_name).to be [chicken, sandwhich, pasta]
+    end
   end
 end

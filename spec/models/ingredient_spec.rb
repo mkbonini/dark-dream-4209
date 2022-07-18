@@ -29,5 +29,13 @@ RSpec.describe Ingredient, type: :model do
       expect(chicken.recipe_count).to eq(2)
       expect(bread.recipe_count).to eq(0)
     end
+
+    it 'orders by name alphabetically' do
+      zucchini = Ingredient.create!(name: 'zucchini', cost: 2)
+      chicken = Ingredient.create!(name: 'grilled chicken', cost: 3)
+      bread = Ingredient.create!(name: 'white bread', cost: 4)
+
+      expect(Ingredient.order_by_name).to be [chicken, bread, zucchini]
+    end
   end
 end
