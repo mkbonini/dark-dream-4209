@@ -31,4 +31,15 @@ RSpec.describe 'ingredients index page' do
         expect(page).to have_content("grilled chicken: 2")
         expect(page).to have_content("white bread: 0")
     end
+
+    it 'lists ingredients in alphabetical order' do
+        zucchini = Ingredient.create!(name: 'zucchini', cost: 2)
+        chicken = Ingredient.create!(name: 'grilled chicken', cost: 3)
+        bread = Ingredient.create!(name: 'white bread', cost: 4)
+
+        visit '/ingredients'
+        
+        expect(page.text.index('grilled chicken')).to be < page.text.index('white bread')
+        expect(page.text.index('white bread')).to be < page.text.index('zucchini')
+    end
 end
