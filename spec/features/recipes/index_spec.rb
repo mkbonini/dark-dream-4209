@@ -27,4 +27,15 @@ RSpec.describe 'recipes index page' do
             expect(page).to have_content('salad')
         end
     end
+
+    it 'displays recipes in alphabetical order' do
+        pasta = Recipe.create!(name: 'spaghetti', complexity: 1, genre: 'italian')
+        sandwhich = Recipe.create!(name: 'pulled pork', complexity: 2, genre: 'bbq')
+        chicken = Recipe.create!(name: 'chicken salad', complexity: 3, genre: 'salad')
+
+        visit '/recipes'
+
+        expect(page.text.index('chicken salad')).to be < page.text.index('pulled pork')
+        expect(page.text.index('pulled pork')).to be < page.text.index('spaghetti')
+    end
 end
