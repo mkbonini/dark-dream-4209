@@ -7,7 +7,7 @@ RSpec.describe 'ingredients index page' do
         bread = Ingredient.create!(name: 'white bread', cost: 4)
 
         visit '/ingredients'
-
+        
         expect(page).to have_content("spaghetti noodles")
         expect(page).to have_content("grilled chicken")
         expect(page).to have_content("white bread")
@@ -20,7 +20,6 @@ RSpec.describe 'ingredients index page' do
 
         pasta = Recipe.create!(name: 'spaghetti', complexity: 1, genre: 'italian')
         sandwhich = Recipe.create!(name: 'pulled pork', complexity: 2, genre: 'bbq')
-
 
         recipe_ingredient_1 = RecipeIngredient.create!(recipe_id: pasta.id, ingredient_id: noodles.id)
         recipe_ingredient_2 = RecipeIngredient.create!(recipe_id: pasta.id, ingredient_id: chicken.id)
