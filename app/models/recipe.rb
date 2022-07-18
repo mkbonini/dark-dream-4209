@@ -4,4 +4,8 @@ class Recipe < ApplicationRecord
     validates :genre, presence: true
     has_many :recipe_ingredients
     has_many :ingredients, through: :recipe_ingredients
+
+    def total_cost 
+        ingredients.pluck(:cost).sum
+    end
 end
