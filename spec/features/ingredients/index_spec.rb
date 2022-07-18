@@ -26,7 +26,6 @@ RSpec.describe 'ingredients index page' do
         recipe_ingredient_2 = RecipeIngredient.create!(recipe_id: pasta.id, ingredient_id: chicken.id)
         recipe_ingredient_3 = RecipeIngredient.create!(recipe_id: sandwhich.id, ingredient_id: chicken.id)
 
-
         visit '/ingredients'
 
         expect(page).to have_content("spaghetti noodles: 1")
