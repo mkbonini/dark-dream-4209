@@ -8,4 +8,8 @@ class Recipe < ApplicationRecord
     def total_cost 
         ingredients.pluck(:cost).sum
     end
+
+    def self.order_by_name
+        Recipe.order("name")
+    end
 end

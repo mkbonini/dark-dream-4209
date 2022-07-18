@@ -8,4 +8,8 @@ class Ingredient < ApplicationRecord
     def recipe_count
         recipes.count
     end
+
+    def self.order_by_name
+        Ingredient.order("name")
+    end
 end

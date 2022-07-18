@@ -35,7 +35,7 @@ RSpec.describe Ingredient, type: :model do
       chicken = Ingredient.create!(name: 'grilled chicken', cost: 3)
       bread = Ingredient.create!(name: 'white bread', cost: 4)
 
-      expect(Ingredient.order_by_name).to be [chicken, bread, zucchini]
+      expect(Ingredient.order_by_name).to match_array([chicken, bread, zucchini])
     end
   end
 end
