@@ -11,4 +11,19 @@ RSpec.describe Recipe, type: :model do
     it {should have_many :recipe_ingredients}
     it {should have_many(:ingredients).through(:recipe_ingredients)}
   end
+
+  describe 'methods' do
+    it 'returns total cost' do
+      pasta = Recipe.create!(name: 'spaghetti', complexity: 1, genre: 'italian')
+      noodles = Ingredient.create!(name: 'spaghetti noodles', cost: 2)
+      chicken = Ingredient.create!(name: 'grilled chicken', cost: 3)
+      sauce = Ingredient.create!(name: 'red sauce', cost: 4)
+
+      recipe_ingredient_1 = RecipeIngredient.create!(recipe_id: pasta.id, ingredient_id: noodles.id)
+      recipe_ingredient_2 = RecipeIngredient.create!(recipe_id: pasta.id, ingredient_id: chicken.id)
+      recipe_ingredient_3 = RecipeIngredient.create!(recipe_id: pasta.id, ingredient_id: sauce.id)
+
+      expect(pasta.total_cost).to eq(9)
+    end
+  end
 end
