@@ -1,5 +1,6 @@
 # Hells Kitchen
-## by: Mike Bonini
+### by: Mike Bonini
+#### Completed all user stories and extentions
 
 Fork this repository and clone your newly created repository. 
 
